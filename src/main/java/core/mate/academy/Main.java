@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        MachineService<Machine> machineService = new MachineServiceImpl();
+        MachineService machineService = new MachineServiceImpl();
 
         List<Bulldozer> bulldozers = machineService.getAll(Bulldozer.class);
         machineService.startWorking(bulldozers);

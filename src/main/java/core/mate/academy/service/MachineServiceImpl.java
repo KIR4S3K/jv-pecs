@@ -6,7 +6,7 @@ import core.mate.academy.model.Machine;
 import core.mate.academy.model.Truck;
 import java.util.List;
 
-public class MachineServiceImpl implements MachineService<Machine> {
+public class MachineServiceImpl implements MachineService {
 
     private final MachineProducer<Bulldozer> bulldozerProducer = new BulldozerProducer();
     private final MachineProducer<Excavator> excavatorProducer = new ExcavatorProducer();
@@ -15,11 +15,11 @@ public class MachineServiceImpl implements MachineService<Machine> {
     @Override
     public <T extends Machine> List<T> getAll(Class<T> type) {
         if (Bulldozer.class.equals(type)) {
-            return (List<T>) bulldozerProducer.get();
+            return (List<T>)(List<?>) bulldozerProducer.get();
         } else if (Excavator.class.equals(type)) {
-            return (List<T>) excavatorProducer.get();
+            return (List<T>)(List<?>) excavatorProducer.get();
         } else if (Truck.class.equals(type)) {
-            return (List<T>) truckProducer.get();
+            return (List<T>)(List<?>) truckProducer.get();
         }
         throw new IllegalArgumentException("Unknown machine type: " + type);
     }
